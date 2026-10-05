@@ -368,7 +368,7 @@ def main() -> None:
 
     # 3. reroll
     p_reroll = subparsers.add_parser("reroll", help="Re-synthesize a specific line take.")
-    p_reroll.add_argument("--output-dir", required=True, help="Existing run output directory")
+    p_reroll.add_argument("-o", "--output-dir", required=True, help="Existing run output directory")
     p_reroll.add_argument("--line", type=int, required=True, help="Line number/index to re-roll")
     p_reroll.add_argument("--text", help="Optional replacement text for this line")
     p_reroll.add_argument("-v", "--voice", action="append", help="Voice mapping override")
@@ -378,7 +378,7 @@ def main() -> None:
 
     # 4. assemble
     p_assemble = subparsers.add_parser("assemble", help="Re-assemble existing takes into master track.")
-    p_assemble.add_argument("--output-dir", required=True, help="Existing run output directory")
+    p_assemble.add_argument("-o", "--output-dir", required=True, help="Existing run output directory")
     p_assemble.add_argument("--pause", type=float, help="Override pause duration between takes (seconds)")
 
     args = parser.parse_args()
