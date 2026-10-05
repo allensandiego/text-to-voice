@@ -1,0 +1,12 @@
+# Chatterbox TTS engine dependency
+git+https://github.com/resemble-ai/chatterbox.git
+
+# Studio Web UI & CLI
+gradio>=5.0
+rich>=13.0
+
+# Audio Processing & IO
+soundfile>=0.12.0
+pydub>=0.25.0
+numpy>=1.24.0
+torch>=2.1.0

@@ -1,0 +1,28 @@
+Title: Testing Local AI Voiceovers
+Author: Vlog Studio
+Draft date: 2026-10-06
+
+INT. HOME STUDIO - DAY
+
+HOST
+Hey everyone, welcome back to the channel!
+(chuckles)
+Today we are diving into something I've been waiting to test for months. Fully local, zero-subscription AI voice generation running right on Apple Silicon.
+
+(beat)
+
+NARRATOR
+He had spent the last three days wrestling with conflicting CUDA packages. But this time, everything actually worked on the first try.
+
+HOST
+No external cloud APIs, no recurring token charges, and zero latency. Just pure neural synthesis running locally.
+[pause: 1.2s]
+Listen to how natural this transition sounds. [laugh] It even catches subtle vocal inflections and breathing pauses!
+
+NARRATOR
+The audience was initially skeptical, but the audio waveforms spoke for themselves.
+
+HOST
+So, is it finally time to ditch third-party voiceover subscriptions and run your own voiceover stack?
+(beat)
+Let's break down the benchmarks and see the results.
