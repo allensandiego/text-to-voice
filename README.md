@@ -1,4 +1,4 @@
-# 🎙️ Text to Voice
+# 🎙️ Text to Voice Studio
 
 Automated multi-character screenplay voiceovers powered by local **Chatterbox-Turbo** neural text-to-speech.
 

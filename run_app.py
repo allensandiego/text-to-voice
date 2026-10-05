@@ -19,7 +19,7 @@ from src.app import create_app
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Launch Text to Voice Gradio Web Interface."
+        description="Launch Text to Voice Studio Gradio Web Interface."
     )
     parser.add_argument(
         "--host",
@@ -43,7 +43,7 @@ def main():
     args = parser.parse_args()
 
     print("=" * 65)
-    print("🎙️  Text to Voice (Chatterbox-Turbo)")
+    print("🎙️  Text to Voice Studio (Chatterbox-Turbo)")
     print("=" * 65)
     print(f"Local Access:   http://localhost:{args.port}")
     print(f"Network Access: http://{args.host}:{args.port}")

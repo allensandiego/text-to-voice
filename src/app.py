@@ -121,13 +121,13 @@ APP_CSS = """
 def create_app() -> gr.Blocks:
     """Builds and returns the Gradio Blocks application."""
 
-    with gr.Blocks(title="Text to Voice") as demo:
+    with gr.Blocks(title="Text to Voice Studio") as demo:
         # Header banner and custom styles
         gr.HTML(
             f"""
             <style>{APP_CSS}</style>
             <div class="app-header">
-                <div class="app-title">🎙️ Text to Voice</div>
+                <div class="app-title">🎙️ Text to Voice Studio</div>
                 <div class="app-subtitle">
                     Automated Multi-Character Screenplay Synthesis with Chatterbox-Turbo
                     • Apple Silicon MPS & CUDA Accelerated • Sample-Accurate Timeline & Subtitles
@@ -319,9 +319,9 @@ def create_app() -> gr.Blocks:
                             download_zip = gr.File(label="Full Project Archive (ZIP)")
 
             # =========================================================================
-            # TAB 4: LINE TAKE EDITOR (REROLL)
+            # TAB 4: LINE TAKE STUDIO (REROLL)
             # =========================================================================
-            with gr.Tab("🎛️ 4. Line Take Editor (Reroll)", id="tab_reroll"):
+            with gr.Tab("🎛️ 4. Line Take Studio (Reroll)", id="tab_reroll"):
                 gr.Markdown(
                     "Audition and fine-tune individual dialogue takes. Re-generate any take with "
                     "modified text or sampling parameters, and automatically re-assemble the master track."
