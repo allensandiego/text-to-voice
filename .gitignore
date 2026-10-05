@@ -33,7 +33,7 @@ env.bak/
 venv.bak/
 
 # ==========================================
-# Vlog Voiceover Outputs & Media Artifacts
+# Text to Voice Outputs & Media Artifacts
 # ==========================================
 # Output directory with renders, takes, subtitles & metadata
 output/

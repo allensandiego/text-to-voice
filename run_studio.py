@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Convenience launcher for the Vlog Voiceover Studio Gradio Web UI.
+"""Convenience launcher for the Text to Voice Studio Gradio Web UI.
 
 Usage:
     python run_studio.py [--port 7860] [--host 0.0.0.0] [--share]
@@ -19,7 +19,7 @@ from src.app import create_app
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Launch Vlog Voiceover Studio Gradio Web Interface."
+        description="Launch Text to Voice Studio Gradio Web Interface."
     )
     parser.add_argument(
         "--host",
@@ -43,7 +43,7 @@ def main():
     args = parser.parse_args()
 
     print("=" * 65)
-    print("🎙️  Vlog Voiceover Studio (Chatterbox-Turbo)")
+    print("🎙️  Text to Voice Studio (Chatterbox-Turbo)")
     print("=" * 65)
     print(f"Local Access:   http://localhost:{args.port}")
     print(f"Network Access: http://{args.host}:{args.port}")

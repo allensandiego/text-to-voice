@@ -19,7 +19,7 @@ Chatterbox-Turbo clones voices using a reference audio prompt. For optimal voice
 ## How Voice Profiles Work
 
 - **Custom Voices**: Place your reference voice clip here (e.g. `voices/me.wav` or `voices/host.wav`).
-- **Default / Fallback Voice**: If no voice clip is specified for a character (or if you pass `default` or `none`), `vlog-voiceover` automatically uses Chatterbox-Turbo's builtin voice from `conds.pt`.
+- **Default / Fallback Voice**: If no voice clip is specified for a character (or if you pass `default` or `none`), `text-to-voice` automatically uses Chatterbox-Turbo's builtin voice from `conds.pt`.
 - **Conditionals Caching**: The engine computes acoustic and speaker conditioning once per character and caches it in memory. Multi-line generation across character changes is fast with zero re-encoding overhead.
 
 ## Usage in CLI
@@ -31,7 +31,7 @@ Map characters from your script to voice files using the `--voice` argument:
 python -m src.cli generate scripts/sample_script.fountain \
   --voice HOST=voices/me.wav \
   --voice NARRATOR=default \
-  -o output/vlog_ep1
+  -o output/sample_ep1
 ```
 
 If a character appears in the script but is omitted from `--voice`, it automatically falls back to the builtin default voice.

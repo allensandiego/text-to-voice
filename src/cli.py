@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Command-line interface for vlog-voiceover.
+"""Command-line interface for text-to-voice.
 
 Subcommands:
   parse     - Inspect and parse a script into dialogue lines, characters, and cues.
@@ -167,14 +167,14 @@ def cmd_generate(args: argparse.Namespace) -> int:
     voice_map = parse_voice_args(args.voice)
     all_speakers = {it.speaker for it in items}
 
-    print(f"\n[vlog-voiceover] Target output directory: {out_dir}")
-    print(f"[vlog-voiceover] Total dialogue takes to synthesize: {len(items)}")
+    print(f"\n[text-to-voice] Target output directory: {out_dir}")
+    print(f"[text-to-voice] Total dialogue takes to synthesize: {len(items)}")
 
     # Initialize Engine
-    print(f"[vlog-voiceover] Initializing TTS engine (device: {args.device or 'auto'})...")
+    print(f"[text-to-voice] Initializing TTS engine (device: {args.device or 'auto'})...")
     start_init = time.time()
     engine = VoiceoverEngine(device=args.device, nano=args.nano)
-    print(f"[vlog-voiceover] Engine initialized on '{engine.device}' in {time.time() - start_init:.2f}s")
+    print(f"[text-to-voice] Engine initialized on '{engine.device}' in {time.time() - start_init:.2f}s")
 
     # Register voices
     for spk in all_speakers:
@@ -182,9 +182,9 @@ def cmd_generate(args: argparse.Namespace) -> int:
         engine.register_voice(spk, ref_path)
 
     # Pre-warm conditionals for all characters
-    print("[vlog-voiceover] Pre-caching voice conditionals...")
+    print("[text-to-voice] Pre-caching voice conditionals...")
     engine.preload_voices(list(all_speakers))
-    print("[vlog-voiceover] Voice conditioning cached. Ready for synthesis.")
+    print("[text-to-voice] Voice conditioning cached. Ready for synthesis.")
 
     # Timeline assembler
     assembler = TimelineAssembler(sample_rate=engine.sample_rate)
@@ -216,10 +216,10 @@ def cmd_generate(args: argparse.Namespace) -> int:
         )
 
     gen_duration = time.time() - start_gen
-    print(f"\n[vlog-voiceover] All takes synthesized in {gen_duration:.2f}s!")
+    print(f"\n[text-to-voice] All takes synthesized in {gen_duration:.2f}s!")
 
     # Assemble timeline
-    print("[vlog-voiceover] Assembling master audio, subtitles, and metadata...")
+    print("[text-to-voice] Assembling master audio, subtitles, and metadata...")
     assembly_res = assembler.assemble(out_dir)
 
     print("\n" + "=" * 60)
@@ -265,7 +265,7 @@ def cmd_reroll(args: argparse.Namespace) -> int:
         norm_text, _ = normalize_paralinguistics(args.text)
         take_text = norm_text
 
-    print(f"[vlog-voiceover] Re-rolling Line {args.line} ({speaker}): \"{take_text}\"")
+    print(f"[text-to-voice] Re-rolling Line {args.line} ({speaker}): \"{take_text}\"")
 
     # Initialize Engine
     engine = VoiceoverEngine(device=args.device)
@@ -285,13 +285,13 @@ def cmd_reroll(args: argparse.Namespace) -> int:
 
     take_file = Path(target_take["audio_file"])
     engine.save_audio(wav_tensor, take_file, sr)
-    print(f"[vlog-voiceover] Overwrote take audio: {take_file}")
+    print(f"[text-to-voice] Overwrote take audio: {take_file}")
 
     # Update metadata record text
     target_take["text"] = take_text
 
     # Re-assemble timeline
-    print("[vlog-voiceover] Re-assembling timeline...")
+    print("[text-to-voice] Re-assembling timeline...")
     assembler = TimelineAssembler(sample_rate=engine.sample_rate)
     for t in takes:
         assembler.add_take(

@@ -1,4 +1,4 @@
-"""Vlog Voiceover Studio - Interactive Gradio Web Application.
+"""Text to Voice Studio - Interactive Gradio Web Application.
 
 A modern, production-grade Web UI for multi-character text-to-speech
 screenplay synthesis using Chatterbox-Turbo.
@@ -19,7 +19,7 @@ from .parser import ScriptItem, ScriptParser, normalize_paralinguistics
 from .timeline import TimelineAssembler, TimelineTake
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger("vlog-studio")
+logger = logging.getLogger("text-to-voice")
 
 # Project root directory
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -61,7 +61,7 @@ def get_default_host_voice_path() -> Optional[str]:
 
 # Custom CSS for modern studio theme
 STUDIO_CSS = """
-/* Vlog Voiceover Studio Styling */
+/* Text to Voice Studio Styling */
 .gradio-container {
     max-width: 1200px !important;
     margin: 0 auto !important;
@@ -121,13 +121,13 @@ STUDIO_CSS = """
 def create_app() -> gr.Blocks:
     """Builds and returns the Gradio Blocks application."""
 
-    with gr.Blocks(title="Vlog Voiceover Studio") as demo:
+    with gr.Blocks(title="Text to Voice Studio") as demo:
         # Header banner and custom styles
         gr.HTML(
             f"""
             <style>{STUDIO_CSS}</style>
             <div class="studio-header">
-                <div class="studio-title">🎙️ Vlog Voiceover Studio</div>
+                <div class="studio-title">🎙️ Text to Voice Studio</div>
                 <div class="studio-subtitle">
                     Automated Multi-Character Screenplay Synthesis with Chatterbox-Turbo
                     • Apple Silicon MPS & CUDA Accelerated • Sample-Accurate Timeline & Subtitles
@@ -885,7 +885,7 @@ def create_app() -> gr.Blocks:
 
 
 def main():
-    """Main launcher for the Vlog Voiceover Studio Web UI."""
+    """Main launcher for the Text to Voice Studio Web UI."""
     demo = create_app()
     demo.launch(server_name="0.0.0.0", server_port=7860, share=False)
 

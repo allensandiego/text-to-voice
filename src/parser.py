@@ -533,7 +533,7 @@ if __name__ == "__main__":
 
     HOST
     (chuckles)
-    Welcome to our vlog episode! Today we test the engine.
+    Welcome to our audio script! Today we test the engine.
 
     (beat)
 

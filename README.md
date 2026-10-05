@@ -1,8 +1,8 @@
-# 🎙️ Vlog Voiceover Studio
+# 🎙️ Text to Voice Studio
 
 Automated multi-character screenplay voiceovers powered by local **Chatterbox-Turbo** neural text-to-speech.
 
-Designed for video creators, vloggers, and podcasters: convert screenplay scripts directly into sample-accurate, multi-character master audio tracks with synchronized `.srt` / `.vtt` subtitles and a line-by-line take reroll workflow.
+Convert screenplay scripts directly into sample-accurate, multi-character master audio tracks with synchronized `.srt` / `.vtt` subtitles and a line-by-line take reroll workflow.
 
 ---
 
@@ -61,7 +61,7 @@ Scripts can be written in either **Fountain Screenplay format** or simple **Colo
 
 ### 1. Fountain Format (`.fountain`, `.txt`)
 ```fountain
-Title: My Tech Vlog Episode 1
+Title: My Tech Audio Episode 1
 Author: Studio Creator
 
 INT. HOME STUDIO - DAY
@@ -163,7 +163,7 @@ python -m src.cli parse scripts/sample_script.fountain
 python -m src.cli generate scripts/sample_script.fountain \
   --voice HOST=voices/me.wav \
   --voice NARRATOR=default \
-  -o output/vlog_ep1
+  -o output/audio_ep1
 ```
 *Options:*
 - `-o, --output-dir <dir>`: Target directory for master and take files.
@@ -178,7 +178,7 @@ Re-synthesize a single line take (e.g., line 3) without re-generating the entire
 
 ```bash
 python -m src.cli reroll \
-  --output-dir output/vlog_ep1 \
+  --output-dir output/audio_ep1 \
   --line 3 \
   --text "He tried again with a slightly different wording." \
   --temperature 0.75
@@ -190,7 +190,7 @@ Rebuild `master.wav` and subtitles from existing take audio files (e.g. to test 
 
 ```bash
 python -m src.cli assemble \
-  --output-dir output/vlog_ep1 \
+  --output-dir output/audio_ep1 \
   --pause 0.6
 ```
 
@@ -204,7 +204,7 @@ text-to-voice/
 ├── requirements.txt        # Python package dependencies
 ├── run_studio.py           # Gradio Web UI launcher
 ├── scripts/
-│   ├── sample_script.fountain  # Sample vlog screenplay
+│   ├── sample_script.fountain  # Sample screenplay script
 │   └── test_mini.fountain      # Mini test script
 ├── src/
 │   ├── __init__.py         # Package exports
