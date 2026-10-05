@@ -1,7 +1,7 @@
 # Chatterbox TTS engine dependency
 git+https://github.com/resemble-ai/chatterbox.git
 
-# Studio Web UI & CLI
+# Web UI & CLI
 gradio>=5.0
 rich>=13.0
 

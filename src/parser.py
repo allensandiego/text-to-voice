@@ -529,7 +529,7 @@ if __name__ == "__main__":
     Title: Test Screenplay
     Author: Allen
 
-    INT. STUDIO - DAY
+    INT. ROOM - DAY
 
     HOST
     (chuckles)

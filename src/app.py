@@ -1,4 +1,4 @@
-"""Text to Voice Studio - Interactive Gradio Web Application.
+"""Text to Voice - Interactive Gradio Web Application.
 
 A modern, production-grade Web UI for multi-character text-to-speech
 screenplay synthesis using Chatterbox-Turbo.
@@ -25,7 +25,7 @@ logger = logging.getLogger("text-to-voice")
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 SAMPLE_SCRIPT_PATH = PROJECT_ROOT / "scripts" / "sample_script.fountain"
 DEFAULT_VOICES_DIR = PROJECT_ROOT / "voices"
-DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "output" / "studio_latest"
+DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "output" / "latest"
 
 # Global TTS Engine singleton
 _ENGINE_INSTANCE: Optional[VoiceoverEngine] = None
@@ -59,14 +59,14 @@ def get_default_host_voice_path() -> Optional[str]:
     return ""
 
 
-# Custom CSS for modern studio theme
-STUDIO_CSS = """
-/* Text to Voice Studio Styling */
+# Custom CSS for modern theme
+APP_CSS = """
+/* Text to Voice App Styling */
 .gradio-container {
     max-width: 1200px !important;
     margin: 0 auto !important;
 }
-.studio-header {
+.app-header {
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
     color: #f8fafc;
     padding: 1.5rem 2rem;
@@ -75,14 +75,14 @@ STUDIO_CSS = """
     border: 1px solid #334155;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
-.studio-title {
+.app-title {
     font-size: 1.75rem;
     font-weight: 800;
     letter-spacing: -0.025em;
     margin: 0 0 0.5rem 0;
     color: #38bdf8;
 }
-.studio-subtitle {
+.app-subtitle {
     font-size: 0.95rem;
     color: #94a3b8;
     margin: 0;
@@ -121,14 +121,14 @@ STUDIO_CSS = """
 def create_app() -> gr.Blocks:
     """Builds and returns the Gradio Blocks application."""
 
-    with gr.Blocks(title="Text to Voice Studio") as demo:
+    with gr.Blocks(title="Text to Voice") as demo:
         # Header banner and custom styles
         gr.HTML(
             f"""
-            <style>{STUDIO_CSS}</style>
-            <div class="studio-header">
-                <div class="studio-title">🎙️ Text to Voice Studio</div>
-                <div class="studio-subtitle">
+            <style>{APP_CSS}</style>
+            <div class="app-header">
+                <div class="app-title">🎙️ Text to Voice</div>
+                <div class="app-subtitle">
                     Automated Multi-Character Screenplay Synthesis with Chatterbox-Turbo
                     • Apple Silicon MPS & CUDA Accelerated • Sample-Accurate Timeline & Subtitles
                 </div>
@@ -159,7 +159,7 @@ def create_app() -> gr.Blocks:
                             label="Script Text",
                             value=load_default_script(),
                             lines=16,
-                            placeholder="HOST: Hello world!\n(beat)\nNARRATOR: Welcome to the studio.",
+                            placeholder="HOST: Hello world!\n(beat)\nNARRATOR: Welcome to the scene.",
                         )
                         with gr.Row():
                             btn_parse = gr.Button("🔍 Parse Script", variant="primary", scale=2)
@@ -319,9 +319,9 @@ def create_app() -> gr.Blocks:
                             download_zip = gr.File(label="Full Project Archive (ZIP)")
 
             # =========================================================================
-            # TAB 4: LINE TAKE STUDIO (REROLL)
+            # TAB 4: LINE TAKE EDITOR (REROLL)
             # =========================================================================
-            with gr.Tab("🎛️ 4. Line Take Studio (Reroll)", id="tab_reroll"):
+            with gr.Tab("🎛️ 4. Line Take Editor (Reroll)", id="tab_reroll"):
                 gr.Markdown(
                     "Audition and fine-tune individual dialogue takes. Re-generate any take with "
                     "modified text or sampling parameters, and automatically re-assemble the master track."
@@ -885,7 +885,7 @@ def create_app() -> gr.Blocks:
 
 
 def main():
-    """Main launcher for the Text to Voice Studio Web UI."""
+    """Main launcher for the Text to Voice Web UI."""
     demo = create_app()
     demo.launch(server_name="0.0.0.0", server_port=7860, share=False)
 

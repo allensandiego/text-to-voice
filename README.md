@@ -1,4 +1,4 @@
-# 🎙️ Text to Voice Studio
+# 🎙️ Text to Voice
 
 Automated multi-character screenplay voiceovers powered by local **Chatterbox-Turbo** neural text-to-speech.
 
@@ -14,8 +14,8 @@ Convert screenplay scripts directly into sample-accurate, multi-character master
 - **Fountain & Colon Script Formats**: Supports standard screenplay formatting (Fountain) as well as quick colon-delimited lines (`HOST: Hello world!`).
 - **Paralinguistic Emotional Cues**: Automatically maps stage directions like `(chuckles)` $\to$ `[chuckle]`, `(laughs)` $\to$ `[laugh]`, `(sighs)` $\to$ `[sigh]`, and `(whispers)` $\to$ `[whispering]`. Tags are voiced naturally by the TTS model but cleanly stripped from exported subtitles.
 - **Pacing & Beat Directives**: Support for `[pause: 1.5s]`, `(pause 2.0s)`, and `(beat)` cues with sample-accurate silence insertion.
-- **Line Take Studio (Reroll)**: Audition individual dialogue lines, adjust sampling temperature/top-p, edit line text, and re-roll a single take while automatically re-assembling the master audio track and subtitles.
-- **Interactive Gradio Web Studio**: Modern 4-tab web application for script editing, voice casting, timeline assembly, and take auditing.
+- **Line Take Editor (Reroll)**: Audition individual dialogue lines, adjust sampling temperature/top-p, edit line text, and re-roll a single take while automatically re-assembling the master audio track and subtitles.
+- **Interactive Gradio Web UI**: Modern 4-tab web application for script editing, voice casting, timeline assembly, and take auditing.
 - **Complete Project Export**: Generates `master.wav`, `subtitles.srt`, `subtitles.vtt`, `metadata.json`, individual take files, and a bundled `.zip` archive.
 
 ---
@@ -61,10 +61,10 @@ Scripts can be written in either **Fountain Screenplay format** or simple **Colo
 
 ### 1. Fountain Format (`.fountain`, `.txt`)
 ```fountain
-Title: My Tech Audio Episode 1
-Author: Studio Creator
+Title: My Audio Episode 1
+Author: Creator
 
-INT. HOME STUDIO - DAY
+INT. ROOM - DAY
 
 HOST
 Hey everyone, welcome back to the channel!
@@ -112,18 +112,18 @@ Parentheticals and bracket cues are automatically mapped to Chatterbox-Turbo tag
 
 ---
 
-## 🌐 Web UI Studio Guide
+## 🌐 Web UI Guide
 
-Launch the interactive Gradio Web UI studio with the convenience script:
+Launch the interactive Gradio Web UI with the convenience script:
 
 ```bash
-python run_studio.py
+python run_app.py
 ```
 
 Open your browser to:
 **`http://localhost:7860`**
 
-### Studio Workflow:
+### Web UI Workflow:
 1. **📝 1. Script Editor**:
    - Paste or upload your `.fountain` / `.txt` script.
    - Click **"🔍 Parse Script"** to inspect detected characters, word counts, estimated master duration, and the line-by-line dialogue table.
@@ -138,7 +138,7 @@ Open your browser to:
    - Listen to the concatenated master track in the waveform player.
    - Preview synchronized SRT subtitles.
    - Download `master.wav`, `subtitles.srt`, `subtitles.vtt`, or the complete `.zip` project archive.
-4. **🎛️ 4. Line Take Studio (Reroll)**:
+4. **🎛️ 4. Line Take Editor (Reroll)**:
    - Select any line number from the dropdown to audition that individual take.
    - Edit the line's dialogue text or tweak temperature/top-p.
    - Click **"🎲 Reroll Line Take"**: the engine re-synthesizes the line, updates the take file, automatically re-assembles the master audio track and subtitles, and refreshes the players.
@@ -202,13 +202,13 @@ python -m src.cli assemble \
 text-to-voice/
 ├── README.md               # Complete documentation
 ├── requirements.txt        # Python package dependencies
-├── run_studio.py           # Gradio Web UI launcher
+├── run_app.py              # Gradio Web UI launcher
 ├── scripts/
 │   ├── sample_script.fountain  # Sample screenplay script
 │   └── test_mini.fountain      # Mini test script
 ├── src/
 │   ├── __init__.py         # Package exports
-│   ├── app.py              # Interactive Gradio Web UI Studio
+│   ├── app.py              # Interactive Gradio Web UI
 │   ├── cli.py              # Command-line interface
 │   ├── engine.py           # Chatterbox-Turbo TTS engine & conditioning cache
 │   ├── parser.py           # Fountain/Colon script parser & paralinguistics
@@ -217,7 +217,7 @@ text-to-voice/
 │   ├── README.md           # Voice reference audio guide
 │   └── me.wav              # (Optional) User reference speech clip (>5s)
 └── output/
-    └── studio_latest/      # Generated master tracks, subtitles & takes
+    └── latest/             # Generated master tracks, subtitles & takes
         ├── master.wav
         ├── subtitles.srt
         ├── subtitles.vtt
@@ -225,7 +225,7 @@ text-to-voice/
         ├── takes/
         │   ├── take_001_HOST.wav
         │   └── take_002_NARRATOR.wav
-        └── studio_latest_export.zip
+        └── export.zip
 ```
 
 ---
