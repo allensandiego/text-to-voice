@@ -38,6 +38,7 @@ venv.bak/
 # Output directory with renders, takes, subtitles & metadata
 output/
 outputs/
+output*/
 
 # Audio artifacts & temporary renders
 *.wav
